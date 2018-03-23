@@ -1,11 +1,12 @@
 import numpy as np
 import scipy.optimize
-from neural_net import neuralNetwork
+from encoder import neuralNetwork
 
 
 class Train(object):
-    def __init__(self, neural_net):
+    def __init__(self, neural_net, type="BatchGradientDescent"):
         self.N = neural_net
+        self.type = type
 
     def training_function(self, weights, input_data, known_output):
         self.N.set_weights(weights)

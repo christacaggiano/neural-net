@@ -1,7 +1,7 @@
 from __future__ import print_function, division
-from neural_net import neuralNetwork
 import numpy as np
 import copy
+
 
 class Neuroevolution():
     """ Evolutionary optimization of Neural Networks.
@@ -16,14 +16,14 @@ class Neuroevolution():
         A method which returns a user specified NeuralNetwork instance.
     """
 
-    def __init__(self, population_size, mutation_rate, model):
+    def __init__(self, population_size, mutation_rate, model_builder):
         self.population_size = population_size
         self.mutation_rate = mutation_rate
-        self.model = model
+        self.model_builder = model_builder
 
     def _build_model(self, id):
         """ Returns a new individual """
-        model = self.model
+        model = self.model_builder(n_inputs=self.X.shape[1], n_outputs=self.y.shape[1])
         model.id = id
         model.fitness = 0
         model.accuracy = 0
@@ -125,33 +125,3 @@ class Neuroevolution():
             self.population = next_population
 
         return fittest_individual
-
-
-
-x = np.identity(8)
-y = np.identity(8)
-
-neural_net = neuralNetwork()
-
-population_size = 100
-n_generations = 3000
-mutation_rate = 0.01
-
-model = Neuroevolution(population_size=population_size, mutation_rate=mutation_rate, model=neural_net)
-
-model = model.evolve(x, y, n_generations=n_generations)
-
-
-
-
-
-#
-# loss, accuracy = model.test_on_batch(X_test, y_test)
-#
-# # Reduce dimension to 2D using PCA and plot the results
-# y_pred = np.argmax(model.predict(X_test), axis=1)
-# Plot().plot_in_2d(X_test, y_pred, title="Evolutionary Evolved Neural Network", accuracy=accuracy,
-#                   legend_labels=range(y.shape[1]))
-#
-
-
