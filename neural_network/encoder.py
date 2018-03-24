@@ -1,21 +1,16 @@
 import numpy as np
 
 
-class neuralNetwork(object):
+class NeuralNetwork(object):
     """
     A lot of the gist of this code comes from Stephen Welch's youtube videos
     @stephencwelch https://www.youtube.com/watch?v=UJwK6jAStmg
     """
-    def __init__(self, input_size, hidden_size, output_size, number_layers, loss_function):
+    def __init__(self, input_size, hidden_size, output_size):
 
         self.input_size = input_size
         self.hidden_size = hidden_size
         self.output_size = output_size
-
-        self.loss_function = loss_function()
-
-
-        self.layers = number_layers
 
         self.weight_set_1 = np.random.randn(self.input_size, self.hidden_size)
         self.weight_set_2 = np.random.randn(self.hidden_size, self.output_size)

@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.optimize
-from encoder import neuralNetwork
+from neural_network.encoder import NeuralNetwork
 
 
 class Train(object):
@@ -18,7 +18,7 @@ class Train(object):
         self.input_data = input_data
         self.known_output = known_output
         initial_weights = self.N.get_weights()
-        options = {'maxiter': 7000, 'disp': False}
+        options = {'maxiter': 7000, 'disp': True}
 
         self.training_function(initial_weights, input_data, known_output)
 
