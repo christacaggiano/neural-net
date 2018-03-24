@@ -2,6 +2,8 @@
 ## BMI 203
 ## Winter 2018
 
+[![Build
+Status](https://travis-ci.org/christacaggiano/-neural-net)](https://travis-ci.org/christacaggiano/-neural-net)
 
 
 **Assignment-** Distinguish real binding sites of a
@@ -79,7 +81,7 @@ To prevent negative training data from overwhelming the positive data, I just to
 
 Random samples of the data were chosen for training and testing to evaluate the model's performance. Several iterations of this was performed to achieve at least a sense of confidence in my model.
 
-I found that the parameter that my model was most sensitive to was the optimization method. I found that BFGS was an extremely common optimization method, but it performed terribly on my data, especially my autoencoder. It created many false positives. In contrast, BFGS caused a high false negative rate in my DNA data, something I do not quite understand. Nelder-mead optimization often failed to converge. Newton-CG converged very quickly and produced really consistent results, which made me favor it over other methods. I didn't use a hessian. 
+I found that the parameter that my model was most sensitive to was the optimization method. I found that BFGS was an extremely common optimization method, but it performed terribly on my data, especially my autoencoder. It created many false positives. In contrast, BFGS caused a high false negative rate in my DNA data, something I do not quite understand. Nelder-mead optimization often failed to converge. Newton-CG converged very quickly and produced really consistent results, which made me favor it over other methods. I didn't use a hessian.
 
 Sample output for `hidden_size = 3, num_subsample=500` and 50% of the data reserved for training.
 
