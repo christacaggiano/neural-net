@@ -32,7 +32,7 @@ def autoencoder(matrix_size):
     return round_matrix(predict, 1)  # return rounded prediction
 
 
-def neural_net(x_train, y_train, x_test):
+def neural_net(x_train, y_train, x_test, hidden_size):
     """
     calls neural network, for use on the transcription factor binding data
     :param x_train: input training
@@ -41,7 +41,7 @@ def neural_net(x_train, y_train, x_test):
     :return: rounded prediction matrix
     """
 
-    NN = NeuralNetwork(input_size=x_train.shape[1], output_size=y_train.shape[1], hidden_size=3)  # initialize NN
+    NN = NeuralNetwork(input_size=x_train.shape[1], output_size=y_train.shape[1], hidden_size=hidden_size )  # initialize NN
 
     T = Train(NN)  # training object
     T.train(x_train, y_train)  # train model with our set aside training data
@@ -74,15 +74,18 @@ def run():
     runs neural network
     :return: binding predictions
     """
+
+    hidden_size = 3
+
     print(autoencoder(8))  # test autoencoder
 
     x, y, x_test = return_data(num_subsample=500)  # subsample negative data, get real sequence information
 
     x_training, y_training, x_validation, y_validation = cross_validate(0.2, x, y)  # pick testing and training data
 
-    print(neural_net(x_training, y_training, x_validation))  # print results of NN
+    print(neural_net(x_training, y_training, x_validation, hidden_size))  # print results of NN
 
-    return neural_net(x_training, y_training, x_test)
+    return neural_net(x_training, y_training, x_test, hidden_size)
 
 if __name__ == "__main__":
     predictions = run()
