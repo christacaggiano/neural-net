@@ -1,9 +1,9 @@
 # Final Project
 ## BMI 203
 ## Winter 2018
-
+<!-- 
 [![Build
-Status](https://travis-ci.org/christacaggiano/-neural-net)](https://travis-ci.org/christacaggiano/-neural-net)
+Status](https://travis-ci.org/christacaggiano/-neural-net)](https://travis-ci.org/christacaggiano/-neural-net) -->
 
 github repo: https://github.com/christacaggiano/-neural-net
 
@@ -75,7 +75,7 @@ My ANN takes in a 2D array. I chose to set the hidden layer size at 3, as qualit
 ### parameters
 
 * Convergence: my optimization was allowed to proceed for 7,000 iterations with a tolerance of 1e-8. I chose these convergence criteria as they allowed very precise calculation within the compute power of a standard Macbook pro.
-* Learning rate: a learning rate of 0.01 was chosen as it was a fairly large learning rate that produced reasonable accuracy. In the future, the learning rate could be optimized through cross-validation to ensure I picked the best learning rate for my problem 
+* Learning rate: a learning rate of 0.01 was chosen as it was a fairly large learning rate that produced reasonable accuracy. In the future, the learning rate could be optimized through cross-validation to ensure I picked the best learning rate for my problem
 
 
 ### training
