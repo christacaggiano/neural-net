@@ -72,6 +72,12 @@ the beginning of each fasta file, and discarded remaining bases that did not eve
 
 My ANN takes in a 2D array. I chose to set the hidden layer size at 3, as qualitatively, adding more nodes did not seem to improve the quality of my predictions. Future work could be creating a deep neural network with more layers, however, I found that a single layer seemed sufficient for the task. I began by initializing random weight values in the network. The network structure takes the input nodes, uses the first weights to computed the second 'hidden layer.' I used the standard sigmoidal activation function to determine the amount each node contributed to the output layer. Then, the weights of the final layer, also initialized randomly, were multiplied by this activation matrix. A final use of the sigmoid function gave the output as a value between 0 and 1, the probability that the data was a true binding site.
 
+### parameters
+
+* Convergence: my optimization was allowed to proceed for 7,000 iterations with a tolerance of 1e-8. I chose these convergence criteria as they allowed very precise calculation within the compute power of a standard Macbook pro.
+* Learning rate: a learning rate of 0.01 was chosen as it was a fairly large learning rate that produced reasonable accuracy. In the future, the learning rate could be optimized through cross-validation to ensure I picked the best learning rate for my problem 
+
+
 ### training
 
 For training, a batch gradient optimization was used. Cost was calculated as the square distance between the true and predicted values. All the errors were summed. The gradient was calculated as the change in this cost function. I used scipy gradient optimizer to update the weights of my NN in order to minimize the cost. I found that Newton conjugate gradient method performed the most consistently on my data.
