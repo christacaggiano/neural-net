@@ -32,14 +32,15 @@ class NeuralNetwork(object):
         """
 
         self.layer_2 = np.dot(input_data, self.weight_set_1)  # multiply the input data by our current 'best weights'
-        self.activity = self.sigmoid(self.layer_2)  # compute the activation of this weighted layer (val between 0-1)
+        self.activity = NeuralNetwork.sigmoid(self.layer_2)  # compute the activation of this weighted layer (val between 0-1)
         self.layer_3 = np.dot(self.activity, self.weight_set_2)  # from the hidden layer, calculate weights to output
 
         output = self.sigmoid(self.layer_3)  # 'predict' the output of a given input using the activation function
 
         return output
 
-    def sigmoid(self, layer):
+    @staticmethod
+    def sigmoid(layer):
         """
         activation function: decides the amount that a given node contributes to the output
         in this case a sigmoidal activation function is used
@@ -48,7 +49,8 @@ class NeuralNetwork(object):
         """
         return 1/(1+np.exp(-layer))
 
-    def sigmoid_derivative(self, layer):
+    @staticmethod
+    def sigmoid_derivative(layer):
         """
         the rate of change of the sigmoid activation function
         :param layer: array of values
@@ -85,8 +87,8 @@ class NeuralNetwork(object):
         """
         self.output = self.forward(input_data)  # predict the output
 
-        delta3 = np.multiply(-(known_output - self.output), self.sigmoid_derivative(self.layer_3))  # change of layer 3
-        delta2 = np.dot(delta3, self.weight_set_2.T) * self.sigmoid_derivative(self.layer_2)  # change of layer 2
+        delta3 = np.multiply(-(known_output - self.output), NeuralNetwork.sigmoid_derivative(self.layer_3))  # change of layer 3
+        delta2 = np.dot(delta3, self.weight_set_2.T) * NeuralNetwork.sigmoid_derivative(self.layer_2)  # change of layer 2
         return np.dot(input_data.T, delta2), np.dot(self.activity.T, delta3)  # the derivative of the cost function w/ respect to the change
 
     def set_weights(self, weights):

@@ -5,6 +5,7 @@
 [![Build
 Status](https://travis-ci.org/christacaggiano/-neural-net)](https://travis-ci.org/christacaggiano/-neural-net)
 
+github repo: https://github.com/christacaggiano/-neural-net
 
 **Assignment-** Distinguish real binding sites of a
 transcription factor (RAP1) from other sequences.

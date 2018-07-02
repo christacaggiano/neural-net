@@ -28,13 +28,14 @@ def one_hot_encode(string):
     integer_encoded = integer_encoded.reshape(len(integer_encoded), 1)  # make a shape to fit with one hot encoding obj
     return onehot_encoder.fit_transform(integer_encoded).toarray()  # return an array
 
+
 def generate_labels(size, label_type):
     """
     simple function that assigns a label whether the input is determined a 'true' binding site
     values are arbitrarily set to 0 and 1
     :param size: number of labels
     :param label_type: Boolean True==positive training
-    :return:
+    :return: positive numpy array
     """
     if label_type:
         return np.full((size, 1), 1, dtype=float)  # return positive numpy array

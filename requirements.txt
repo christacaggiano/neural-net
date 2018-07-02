@@ -1,0 +1,4 @@
+numpy
+biopython
+scikit-learn
+progressbar2
